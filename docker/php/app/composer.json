@@ -1,0 +1,10 @@
+{
+  "require": {
+    "ext-cassandra": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "CassandraTest\\": "src"
+    }
+  }
+}

@@ -1,0 +1,6 @@
+---
+version: "1"
+services:
+  php:
+    command: ["app:run"]
+    build: docker/php

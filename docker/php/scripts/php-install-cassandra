@@ -1,0 +1,20 @@
+#!/bin/sh -e
+# Script for installing php cassandra module from source
+
+# Install some deps for running phpize
+apk add ${PHPIZE_DEPS} gmp-dev gmp libuv-dev libuv cassandra-cpp-driver-dev cassandra-cpp-driver openssl-dev openssl cmake
+
+git clone https://github.com/nano-interactive/ext-cassandra.git
+cd ext-cassandra/ext
+git checkout ${CASSANDRA_PHP_CHECKOUT_REF}
+
+phpize
+./configure
+make
+make test
+make install
+
+cd /
+rm -rf /ext-cassandra
+
+echo "extension=cassandra.so" >> /usr/local/etc/php/php.ini
