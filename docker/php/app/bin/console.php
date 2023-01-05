@@ -19,7 +19,7 @@ while (true) {
         foreach ($result as $row) {
             print_r($row);
         }
-        break;
+        exit(0);
     } catch (Exception $e) {
         echo("Failed to use cassandra with error {$e->getMessage()}\n");
         sleep(10);
