@@ -1,6 +1,16 @@
 ---
 version: "1"
+
 services:
   php:
     command: ["app:run"]
     build: docker/php
+  cassandra:
+    build: docker/cassandra
+    ports:
+      - "7000:7000"
+      - "9042:9042"
+    environment:
+      - CASSANDRA_SEEDS=cassandra
+      - CASSANDRA_PASSWORD_SEEDER=yes
+      - CASSANDRA_PASSWORD=cassandra
